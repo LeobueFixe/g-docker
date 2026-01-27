@@ -1,6 +1,8 @@
 IMG_NAME = nginx-https
 CTN_NAME = g-docker
 
+
+
 build:
 	docker build -t $(IMG_NAME) .
 
