@@ -1,7 +1,3 @@
-
-IMG_NAME = g-docker
-CTN_NAME = container-g-docker
-
 build:
     docker build -t g-docker .
 
