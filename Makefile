@@ -1,17 +1,14 @@
-IMG_NAME = nginx-https
-CTN_NAME = g-docker
-
-
+.PHONY: build run stop clean
 
 build:
-	docker build -t $(IMG_NAME) .
+	docker build -t g-docker .
 
-run:
-	docker run --name $(CTN_NAME) -p 8080:80 -p 443:443 $(CTN_NAME)
+run: build
+	docker run -d --name container-g-docker -p 3000:80 g-docker
 
 stop:
-	docker stop $(CTN_NAME) || true
-	docker rm $(CTN_NAME) || true
+	docker stop container-g-docker
+	docker rm container-g-docker
 
-clean:
-	docker rmi $(IMG_NAME)
+clean: stop
+	docker rmi g-docker
